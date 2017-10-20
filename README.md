@@ -5,6 +5,10 @@
 <a href="https://discord.gg/X39ZxyZ"><img src="https://discordapp.com/api/guilds/354839032850546688/widget.png" alt="Discord server"></a>
 </p>
 
+| **`Stable`**  | **`Experimental`**  | **`Documentation`**  |
+| ------------- |:-------------------:| --------------------:|
+|    PASSED     |       PASSED        |        PASSED        |
+
 ---
 
 EccentricAi is a multifunction Discord bot that was made simply for its cleaner UI. Written in JavaScript [Node.JS](https://nodejs.org), using the [discord.js](https://github.com/hydrabolt/discord.js/) library.
