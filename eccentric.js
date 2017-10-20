@@ -38,6 +38,10 @@ var embedPurple = 0x7d0099;
 var embedWarn = 0xb8b500;
 var embedError = 0xc20000;
 
+//invite stuff
+var eccserverlink = "https://discord.gg/X39ZxyZ";
+var eccinvitelink = "https://discordapp.com/oauth2/authorize?client_id=368613325363478529&scope=bot&permissions=16392";
+
 //basic and totally necessary helper funcs
 function randomInt(min, max) {
     min = Math.ceil(min);
@@ -287,7 +291,75 @@ var commands = {
 			}
 		},
 		"bio": "Deletes a given amount of messages from the chat",
-		"syntax": "<no. of messages 2 delete> (Max Delete: 100)"
+		"syntax": "abolish <no. of messages 2 delete> (Max Delete: 100)"
+	},
+	"say": {
+		"response": function(bot,msg,args) {
+			if(args) {
+				var txt = args.trim();
+				if(!txt.startsWith(prefix)) {
+					msg.channel.send(args);
+					msg.delete(1000);
+				}
+				else {
+					const txtfEm = new Discord.RichEmbed()
+					.setColor(embedError)
+					.setDescription("You cant make me execute my own commands!");
+					msg.channel.send({embed: txtfEm});
+				}
+			}
+			else {
+				const txtf2 = new Discord.RichEmbed()
+				.setColor(embedError)
+				.setDescription("input something for me to say!");
+				msg.channel.send({embed: txtf2});
+			}
+		},
+		"bio": "Force me to say something",
+		"syntax": "say <text>"
+	},
+	"setprefix": {
+		"response": function(bot,msg,args) {
+			if(isAdmin(msg.member) == true) {
+				if(args) {
+					if(args.length < 8) {
+						storage.setItemSync(msg.guild.id + "_prefix", args);
+						const pEm = new Discord.RichEmbed()
+						.setColor(embedPurple)
+						.setDescription("Prefix set to `" + args + "`");
+						msg.channel.send({embed: pEm});
+					}
+					else {
+						const f1 = new Discord.RichEmbed()
+						.setColor(embedError)
+						.setDescription("Please input a prefix shorter than 8 characters");
+						msg.channel.send({embed: f1});
+					}
+				}
+				else {
+					storage.removeItemSync(msg.guild.id + "_prefix");
+					const pR1 = new Discord.RichEmbed()
+					.setColor(embedPurple)
+					.setDescription("Current prefix has been reset to the default prefix!");
+					msg.channel.send({embed: pR1});
+				}
+			}
+			else {
+				const f2 = new Discord.RichEmbed()
+				.setColor(embedWarn)
+				.setDescription("You don't have permission to do this!");
+				msg.channel.send({embed: f2});
+			}
+		},
+		"bio": "Sets a new prefix for you server",
+		"syntax": "prefix <new prefix>"
+	},
+	"invitelink": {
+		"response": function(bot,msg,args) {
+			msg.channel.send("Here is the invite link: " + eccinvitelink + "\nJoin my server: " + eccserverlink);
+		},
+		"bio": "Gives the invite link for EccentricAi",
+		"syntax": "invite"
 	}
 }
 
@@ -306,6 +378,7 @@ function getHelpDescription() {
 
 bot.on("ready", () => {
 	var users = bot.users.array();
+	//var customprefix = storage.getItemSync(bot.guild.id + "_prefix");
 	//Bot set game init
 	eccgames = ["with " + users.length + " users", "the depths of benzogin", "with 2000+ lines of code!", "with Nettle Bot's corpse"];
 	getRandGame = Math.floor(Math.random() * eccgames.length);
@@ -327,7 +400,16 @@ bot.on("ready", () => {
 
 bot.on("message", msg => {
 	//start of main command processing
-	if(msg.content.startsWith(prefix)) {
+	//prefix manager
+	if(msg.guild && msg.guild.available) {
+		var customp = storage.getItemSync(msg.guild.id + "_prefix");
+	}
+	if(!customp) {
+		customp = prefix;
+	}
+
+	//main command handler
+	if(msg.content.startsWith(customp)) {
 		if(msg.guild && msg.guild.available) {
 			//initialize command arg managers
 			var commandWithArgs = msg.content.substring(prefix.length);
