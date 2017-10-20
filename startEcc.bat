@@ -1,0 +1,6 @@
+@echo off
+echo Starting script...
+:main
+node eccentric.js
+echo Seems like the bot crashed. Commencing Restart...
+goto main

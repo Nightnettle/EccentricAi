@@ -1,0 +1,11 @@
+{
+	"Prefix": ".ecc",
+	"eccToken": "MzY4NjEzMzI1MzYzNDc4NTI5.DMMhcg.CTAuE4wDG5Nyypg7XrLMMD0kufk",
+	"eccId": "368613325363478529",
+	"image_folder": "./images",
+	"music_folder": "./music",
+	"admin_ids": ["307832178073403392", "158914810917027840", "135957900098011137", "281110161442078720", "245024094297260032"],
+	"log_chat": false,
+	"botName": "EccentricAi",
+	"botDescription": "A magical robot that walks through time itself"
+}

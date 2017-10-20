@@ -1,0 +1,22 @@
+{
+  "name": "eccentricai",
+  "version": "2.0.0",
+  "description": "A supreme yet oddly strange bot to suit anyone's needs",
+  "main": "eccentric.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Supreme_bot",
+    "master_bot",
+    "moderator_bot",
+    "amazing_bot",
+    "discord.js",
+    "discord.js_bots"
+  ],
+  "author": "Nightmeister",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^11.2.1"
+  }
+}
