@@ -18,11 +18,14 @@ EccentricAi is a multifunction Discord bot that was made simply for its cleaner 
 Sure! However I only support installation of this bot on windows 7 or later. Simply follow the steps below...
 
 -git clone the repo or download the zip into your working space on your local machine
+
 -install [node.js](https://nodejs.org/)
+
 -install the necessary [discord.js](https://github.com/hydrabolt/discord.js/) library
+
 -Lastly simply run the .bat file and the bot should be up and running!
 
-## Licensed
+## License
 
 Licensed under MIT
 
