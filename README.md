@@ -7,7 +7,7 @@
 
 | **`Stable`**  | **`Experimental`**  | **`Documentation`**  |
 | ------------- |:-------------------:| --------------------:|
-|    PASSED     |       PASSED        |        PASSED        |
+|    PASSED     |       PASSED        |      PASSED        |
 
 ---
 
